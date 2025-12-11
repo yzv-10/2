@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Banco Seguro - Acceso</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+    body {
+        font-family: ‘Roboto’, Arial, sans-serif;
+        background-color: #f5f7fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-container {
+        width: 420px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        padding: 50px 40px;
+        text-align: center;
+    }
+
+    .bank-name {
+        font-size: 32px;
+        font-weight: 700;
+        color: #0d3dbb;
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        color: #0d3dbb;
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+
+    input {
+        width: 100%;
+        padding: 14px 12px;
+        margin: 12px 0;
+        border-radius: 6px;
+        border: 1px solid #b9b9b9;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        font-size: 17px;
+        background-color: #0d3dbb;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-weight: 700;
+    }
+
+    button:hover {
+        background-color: #0056a3;
+    }
+
+    #pantalla2, #pantalla3 {
+        display: none;
+    }
+
+    /* Pantalla de error */
+    #pantalla3 .login-container {
+        background-color: #b30000 !important;
+        color: white !important;
+    }
+
+    #pantalla3 h2 {
+        color: white !important;
+    }
+</style>
+
+<script>
+function acceder() {
+    document.getElementById("pantalla1").style.display = "none";
+    document.getElementById("pantalla2").style.display = "flex";
+
+    setTimeout(function() {
+        document.getElementById("pantalla2").style.display = "none";
+        document.getElementById("pantalla3").style.display = "flex";
+    }, 2000);
+}
+</script>
+
+</head>
+<body>
+
+<!-- PANTALLA 1: Login -->
+<div id="pantalla1">
+    <div class="login-container">
+        <div class="bank-name">BANCO SEGURO</div>
+        
+        <h2>Acceso clientes</h2>
+        
+        <input type="text" placeholder="Usuario" id="usuario">
+        <input type="password" placeholder="Contraseña" id="pw">
+        
+        <button onclick="acceder()">Entrar</button>
+    </div>
+</div>
+
+<!-- PANTALLA 2: Verificando -->
+<div id="pantalla2" style="display:none; justify-content:center; align-items:center;">
+    <div class="login-container">
+        <h2>Verificando datos...</h2>
+        <p style="font-size:60px;">🔄</p>
+        <p>Por favor, espera unos segundos.</p>
+    </div>
+</div>
+
+<!-- PANTALLA 3: Contraseña incorrecta -->
+<div id="pantalla3" style="display:none; justify-content:center; align-items:center;">
+    <div class="login-container">
+        <h2>Contraseña incorrecta</h2>
+        <p style="font-size:70px; margin: 20px 0;">❌</p>
+        <p>El acceso no ha sido autorizado.<br>Vuelve a intentarlo.</p>
+    </div>
+</div>
+
+</body>
+</html>
